@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,99 +11,71 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <Button
-            android:id="@+id/button1"
+        <!-- AutoCompleteTextView untuk mencari penyakit -->
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tuber" />
+            android:hint="Cari Penyakit"
+            android:textSize="16sp"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            android:layout_marginBottom="16dp"
+            android:inputType="text" />
 
-        <Button
-            android:id="@+id/button2"
+        <!-- TextView untuk deskripsi penyakit -->
+        <TextView
+            android:id="@+id/descriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Data Mining: Concepts and Techniques" />
+            android:layout_marginBottom="16dp"
+            android:text="Deskripsi penyakit akan muncul di sini."
+            android:textSize="16sp"
+            android:textColor="#000000" />
 
-        <Button
-            android:id="@+id/button3"
+        <!-- Layout untuk detail tambahan -->
+        <LinearLayout
+            android:id="@+id/dynamicContentLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Introduction to Algorithms" />
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:visibility="gone">
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Database System Concepts" />
+            <!-- Gejala Awal -->
+            <TextView
+                android:id="@+id/gejalaAwalTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gejala Awal: "
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
 
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Computer Networking: A Top-Down Approach" />
+            <!-- Gejala Akhir -->
+            <TextView
+                android:id="@+id/gejalaAkhirTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gejala Akhir: "
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
 
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Design Patterns: Elements of Reusable Object-Oriented Software" />
+            <!-- Penyebab -->
+            <TextView
+                android:id="@+id/penyebabTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Penyebab: "
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
 
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="The Pragmatic Programmer" />
-
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Machine Learning" />
-
-        <Button
-            android:id="@+id/button9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Software Engineering" />
-
-        <Button
-            android:id="@+id/button10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Human-Computer Interaction" />
-
-        <Button
-            android:id="@+id/button11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="IEEE Transactions on Pattern Analysis and Machine Intelligence" />
-
-        <Button
-            android:id="@+id/button12"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ACM Computing Surveys" />
-
-        <Button
-            android:id="@+id/button13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Journal of Artificial Intelligence Research" />
-
-        <Button
-            android:id="@+id/button14"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="International Journal of Computer Vision" />
-
-        <Button
-            android:id="@+id/button15"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Information Systems Research" />
-
-
-
-
+            <!-- Obat -->
+            <TextView
+                android:id="@+id/obatTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Obat: "
+                android:textSize="16sp" />
+        </LinearLayout>
     </LinearLayout>
-
 </ScrollView>

@@ -1,16 +1,10 @@
 package com.example.a2312500602_rafifuas;
 
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import android.os.Bundle;
-import android.widget.Button;
-import androidx.appcompat.app.AlertDialog;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class PenyakitActivity extends AppCompatActivity {
@@ -20,59 +14,106 @@ public class PenyakitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_penyakit);
 
-        // Inisialisasi Button dan set OnClickListener untuk menampilkan AlertDialog
-        Button button1 = findViewById(R.id.button1);
-        button1.setOnClickListener(v -> showAlert("oleh Stuart Russell dan Peter Norvig - Buku ini membahas konsep dasar kecerdasan buatan dan penerapannya."));
+        // Data untuk AutoCompleteTextView
+        String[] items = {
+                "Flu (Influenza)", "Demam Berdarah", "Jerawat (Acne Vulgaris)", "Asma", "Anemia",
+                "Skoliosis", "Diabetes Tipe 1", "Obesitas", "Depresi", "Insomnia",
+                "Penyakit Jantung Bawaan", "Tifus (Demam Tifoid)", "Pneumonia", "Skabies", "Cacar Air",
+                "Kecanduan Gawai", "Kanker Darah (Leukemia)", "HIV/AIDS", "Gagal Ginjal Akut", "Hepatitis B"
+        };
 
-        Button button2 = findViewById(R.id.button2);
-        button2.setOnClickListener(v -> showAlert(" oleh Jiawei Han, Micheline Kamber, dan Jian Pei - Buku ini mengulas teknik dan konsep dalam data mining."));
+        // Gejala awal untuk setiap penyakit
+        String[] gejalaAwal = {
+                "Demam ringan, pilek, sakit tenggorokan.", "Demam tinggi tiba-tiba, sakit kepala, nyeri otot.",
+                "Komedo hitam/putih, kulit berminyak.", "Sesak napas ringan, batuk saat olahraga.",
+                "Mudah lelah, pucat.", "Postur tubuh tidak simetris, nyeri punggung ringan.",
+                "Haus berlebihan, sering buang air kecil.", "Berat badan mulai naik, nafsu makan berlebihan.",
+                "Sedih terus-menerus, kehilangan minat.", "Sulit tidur, lelah saat pagi.",
+                "Mudah lelah, sesak napas ringan.", "Demam ringan, sakit kepala.",
+                "Demam ringan, batuk kering.", "Gatal di malam hari, bintik kecil merah.",
+                "Demam, ruam kecil.", "Waktu penggunaan meningkat, sulit lepas.",
+                "Mudah lelah, kulit pucat.", "Demam, pembengkakan kelenjar.",
+                "Bengkak, penurunan jumlah urin.", "Mual, kelelahan."
+        };
 
-        Button button3 = findViewById(R.id.button3);
-        button3.setOnClickListener(v -> showAlert(" oleh Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, dan Clifford Stein - Buku yang menjadi referensi dalam mempelajari algoritma secara mendalam."));
+        // Gejala akhir untuk setiap penyakit
+        String[] gejalaAkhir = {
+                "Batuk berat, demam tinggi, lemas.", "Muncul bintik merah, pendarahan ringan, syok.",
+                "Jerawat bernanah, kemerahan, bekas luka.", "Sesak berat, napas berbunyi, sulit bicara.",
+                "Pusing berat, sesak napas, detak jantung cepat.", "Nyeri kronis, gangguan pernapasan.",
+                "Penurunan berat badan drastis, kelelahan ekstrem.", "Sulit bergerak, nyeri sendi, hipertensi.",
+                "Keinginan bunuh diri, isolasi sosial.", "Konsentrasi menurun, gangguan kesehatan umum.",
+                "Pembengkakan kaki, sianosis.", "Demam tinggi, diare/konstipasi.",
+                "Batuk berdahak, sesak napas berat.", "Luka akibat garukan, infeksi sekunder.",
+                "Lepuhan berisi cairan, gatal parah.", "Gangguan tidur, kesehatan mental terganggu.",
+                "Pendarahan, infeksi berat.", "Penurunan berat badan, infeksi oportunistik.",
+                "Lelah berat, nyeri pinggang.", "Kulit kuning, urin gelap."
+        };
 
-        Button button4 = findViewById(R.id.button4);
-        button4.setOnClickListener(v -> showAlert("oleh Abraham Silberschatz, Henry Korth, dan S. Sudarshan - Buku ini mencakup konsep-konsep sistem basis data."));
+        // Penyebab untuk setiap penyakit
+        String[] penyebab = {
+                "Infeksi virus influenza.", "Gigitan nyamuk Aedes aegypti yang terinfeksi virus dengue.",
+                "Penyumbatan pori oleh minyak, bakteri, hormon.", "Alergi, udara dingin, aktivitas berat.",
+                "Kekurangan zat besi, gangguan gizi.", "Faktor genetik, kebiasaan postur buruk.",
+                "Kerusakan autoimun pada pankreas.", "Pola makan tidak sehat, kurang olahraga.",
+                "Faktor genetik, tekanan hidup.", "Stres, kebiasaan buruk sebelum tidur.",
+                "Faktor genetik.", "Infeksi bakteri Salmonella typhi.",
+                "Infeksi bakteri, virus, jamur.", "Tungau Sarcoptes scabiei.",
+                "Infeksi virus varicella-zoster.", "Kurangnya pengawasan.",
+                "Mutasi genetik.", "Infeksi virus HIV.", "Dehidrasi, infeksi.",
+                "Virus hepatitis B."
+        };
 
-        Button button5 = findViewById(R.id.button5);
-        button5.setOnClickListener(v -> showAlert(" oleh James F. Kurose dan Keith W. Ross - Buku yang digunakan sebagai referensi dalam studi jaringan komputer."));
+        // Obat untuk setiap penyakit
+        String[] obat = {
+                "Antipiretik (paracetamol), dekongestan, istirahat, dan konsumsi cairan.",
+                "Rehidrasi oral, penanganan di rumah sakit, transfusi darah jika perlu.",
+                "Salep retinoid, antibiotik, pembersih wajah khusus.",
+                "Inhaler bronkodilator, obat antiinflamasi.",
+                "Suplemen zat besi, makanan tinggi zat besi.",
+                "Fisioterapi, penggunaan brace, operasi (kasus berat).",
+                "Insulin, pola makan teratur.", "Diet, olahraga rutin, konseling gizi.",
+                "Psikoterapi, antidepresan (dengan resep dokter).",
+                "Perbaikan kebiasaan tidur, obat tidur (jika perlu).",
+                "Operasi koreksi, pengawasan dokter.", "Antibiotik, istirahat, konsumsi cairan.",
+                "Antibiotik, terapi oksigen (kasus berat).", "Krim permethrin, antihistamin.",
+                "Antihistamin, antivirus, lotion calamine.", "Bimbingan psikologis, pembatasan waktu layar.",
+                "Kemoterapi, transplantasi sumsum tulang.", "Terapi antiretroviral (ARV).",
+                "Dialisis, terapi cairan.", "Antivirus, vaksinasi untuk pencegahan."
+        };
 
-        Button button6 = findViewById(R.id.button6);
-        button6.setOnClickListener(v -> showAlert("oleh Erich Gamma, Richard Helm, Ralph Johnson, dan John Vlissides - Buku tentang pola desain dalam pengembangan perangkat lunak."));
+        // Referensi ke View
+        AutoCompleteTextView autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
+        TextView descriptionTextView = findViewById(R.id.descriptionTextView);
+        LinearLayout dynamicContentLayout = findViewById(R.id.dynamicContentLayout);
+        TextView gejalaAwalTextView = findViewById(R.id.gejalaAwalTextView);
+        TextView gejalaAkhirTextView = findViewById(R.id.gejalaAkhirTextView);
+        TextView penyebabTextView = findViewById(R.id.penyebabTextView);
+        TextView obatTextView = findViewById(R.id.obatTextView);
 
-        Button button7 = findViewById(R.id.button7);
-        button7.setOnClickListener(v -> showAlert(" oleh Andrew Hunt dan David Thomas - Buku ini mengulas berbagai praktik dalam pengembangan perangkat lunak."));
+        // Membuat Adapter untuk AutoCompleteTextView
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, items);
+        autoCompleteTextView.setAdapter(adapter);
 
-        Button button8 = findViewById(R.id.button8);
-        button8.setOnClickListener(v -> showAlert(" oleh Tom M. Mitchell - Buku ini adalah pengantar dasar tentang pembelajaran mesin."));
+        // Menampilkan dropdown saat AutoCompleteTextView diklik
+        autoCompleteTextView.setOnClickListener(v -> autoCompleteTextView.showDropDown());
 
-        Button button9 = findViewById(R.id.button9);
-        button9.setOnClickListener(v -> showAlert("oleh Ian Sommerville - Buku referensi utama dalam studi rekayasa perangkat lunak."));
+        // Menangani Pilihan pada AutoCompleteTextView
+        autoCompleteTextView.setOnItemClickListener((parent, view, position, id) -> {
+            String selectedItem = autoCompleteTextView.getText().toString();
+            int index = java.util.Arrays.asList(items).indexOf(selectedItem);
 
-        Button button10 = findViewById(R.id.button10);
-        button10.setOnClickListener(v -> showAlert(" oleh Alan Dix, Janet E. Finlay, Gregory D. Abowd, dan Russell Beale - Buku tentang antarmuka pengguna dan interaksi manusia-komputer."));
+            if (index != -1) {
+                // Menampilkan data penyakit
+                descriptionTextView.setText("Deskripsi: " + items[index]);
+                gejalaAwalTextView.setText("Gejala Awal: " + gejalaAwal[index]);
+                gejalaAkhirTextView.setText("Gejala Akhir: " + gejalaAkhir[index]);
+                penyebabTextView.setText("Penyebab: " + penyebab[index]);
+                obatTextView.setText("Obat: " + obat[index]);
 
-        Button button11 = findViewById(R.id.button11);
-        button11.setOnClickListener(v -> showAlert("Jurnal terkemuka dalam bidang pengenalan pola dan kecerdasan mesin."));
-
-        Button button12 = findViewById(R.id.button12);
-        button12.setOnClickListener(v -> showAlert("Jurnal yang mengulas berbagai topik terkait ilmu komputer dan teknologi."));
-
-        Button button13 = findViewById(R.id.button13);
-        button13.setOnClickListener(v -> showAlert(" Jurnal yang mempublikasikan penelitian di bidang kecerdasan buatan."));
-
-        Button button14 = findViewById(R.id.button14);
-        button14.setOnClickListener(v -> showAlert(" Jurnal yang membahas penelitian terbaru di bidang computer vision."));
-
-        Button button15 = findViewById(R.id.button15);
-        button15.setOnClickListener(v -> showAlert(" Jurnal yang membahas penelitian terbaru di bidang computer vision."));
-    }
-
-    // Metode untuk menampilkan AlertDialog
-    private void showAlert(String message) {
-        new AlertDialog.Builder(this)
-                .setTitle("Perpustakaan Khusus Dosen")
-                .setMessage(message)
-                .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
-                .show();
+                // Menampilkan layout tambahan
+                dynamicContentLayout.setVisibility(LinearLayout.VISIBLE);
+            }
+        });
     }
 }
