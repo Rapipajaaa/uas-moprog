@@ -23,16 +23,6 @@
             android:layout_marginBottom="16dp"
             android:inputType="text" />
 
-        <!-- TextView untuk deskripsi penyakit -->
-        <TextView
-            android:id="@+id/descriptionTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Deskripsi penyakit akan muncul di sini."
-            android:textSize="16sp"
-            android:textColor="#000000" />
-
         <!-- Layout untuk detail tambahan -->
         <LinearLayout
             android:id="@+id/dynamicContentLayout"
@@ -42,6 +32,30 @@
             android:layout_marginTop="16dp"
             android:visibility="gone">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Deskripsi Penyakit"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+            <!-- TextView untuk deskripsi penyakit -->
+            <TextView
+                android:id="@+id/descriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text=""
+                android:textSize="16sp"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gejala Awal"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
             <!-- Gejala Awal -->
             <TextView
                 android:id="@+id/gejalaAwalTextView"
@@ -49,6 +63,14 @@
                 android:layout_height="wrap_content"
                 android:text="Gejala Awal: "
                 android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gejala Akhir"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 android:layout_marginBottom="8dp" />
 
             <!-- Gejala Akhir -->
@@ -60,6 +82,14 @@
                 android:textSize="16sp"
                 android:layout_marginBottom="8dp" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Penyebab"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
             <!-- Penyebab -->
             <TextView
                 android:id="@+id/penyebabTextView"
@@ -68,7 +98,13 @@
                 android:text="Penyebab: "
                 android:textSize="16sp"
                 android:layout_marginBottom="8dp" />
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Obat"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
             <!-- Obat -->
             <TextView
                 android:id="@+id/obatTextView"
