@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Cari Penyakit"
+            android:textColor="#000000"
             android:textSize="16sp"
             android:background="@android:color/transparent"
             android:padding="8dp"
@@ -35,8 +36,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Deskripsi Penyakit"
+                android:text="Nama Penyakit"
                 android:textSize="18sp"
+                android:textColor="#000000"
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp" />
             <!-- TextView untuk deskripsi penyakit -->
@@ -47,46 +49,54 @@
                 android:layout_marginBottom="16dp"
                 android:text=""
                 android:textSize="16sp"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:onClick="showDialog" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gejala Awal"
+                android:text="Deskripsi"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:textColor="#000000"
                 android:layout_marginBottom="8dp" />
             <!-- Gejala Awal -->
             <TextView
-                android:id="@+id/gejalaAwalTextView"
+                android:id="@+id/deskripsiTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gejala Awal: "
+                android:text=""
                 android:textSize="16sp"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="8dp"
+                android:textColor="#000000"
+                android:onClick="showDialog" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gejala Akhir"
+                android:text="Gejala "
                 android:textSize="18sp"
+                android:textColor="#000000"
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp" />
 
             <!-- Gejala Akhir -->
             <TextView
-                android:id="@+id/gejalaAkhirTextView"
+                android:id="@+id/gejalaTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gejala Akhir: "
+                android:text=" "
+                android:textColor="#000000"
                 android:textSize="16sp"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="8dp"
+                android:onClick="showDialog" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Penyebab"
                 android:textSize="18sp"
+                android:textColor="#000000"
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp" />
 
@@ -95,13 +105,16 @@
                 android:id="@+id/penyebabTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Penyebab: "
+                android:text=""
+                android:textColor="#000000"
                 android:textSize="16sp"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="8dp"
+                android:onClick="showDialog" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Obat"
+                android:text="Pengobatan"
+                android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp" />
@@ -110,8 +123,10 @@
                 android:id="@+id/obatTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Obat: "
-                android:textSize="16sp" />
+                android:textColor="#000000"
+                android:text=""
+                android:textSize="16sp"
+                android:onClick="showDialog" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
