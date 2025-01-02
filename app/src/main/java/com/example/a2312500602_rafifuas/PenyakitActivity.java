@@ -6,6 +6,8 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,14 +29,14 @@ public class PenyakitActivity extends AppCompatActivity {
                 "Flu (Influenza)", "Demam Berdarah", "Jerawat (Acne Vulgaris)", "Asma", "Anemia",
                 "Skoliosis", "Diabetes Tipe 1", "Obesitas", "Depresi", "Insomnia",
                 "Penyakit Jantung Bawaan", "Tifus (Demam Tifoid)", "Pneumonia", "Skabies", "Cacar Air",
-                "Kecanduan Gawai", "Kanker Darah (Leukemia)", "HIV/AIDS", "Gagal Ginjal Akut", "Hepatitis B"
+                "Kecanduan Gawai", "Kanker Darah (Leukemia)", "HIV/AIDS", "Gagal Ginjal Akut", "Hepatitis B","Migren","Vertigo","Infeksi saluran kemih","Alergi","Epilepsi","Psoriasis","Malaria","Kolesterol tinggi","Bronkitis","Radang tenggorokan","Diare"
         };
 
         // Deskripsi untuk setiap penyakit
         String[] deskripsi = {
                 "Flu atau influenza adalah infeksi virus yang menyerang hidung, tenggorokan, dan paru-paru. Penyakit ini mudah menular melalui droplet dari bersin atau batuk, dengan gejala seperti demam, pilek, sakit tenggorokan, dan batuk.",
                 "Demam berdarah adalah infeksi virus yang menular melalui gigitan nyamuk Aedes aegypti. Penyakit ini ditandai dengan demam tinggi, sakit kepala, nyeri otot dan sendi, serta ruam kulit.",
-                "Jerawat adalah kondisi kulit kronis yang disebabkan oleh penyumbatan pori-pori oleh minyak, sel kulit mati, dan bakteri. Gejalanya meliputi munculnya komedo, papul, atau pustul yang terkadang menyebabkan peradangan.",
+                "Jerawat adalah kondisi kulit kronis yang disebabkan oleh penyumbatan pori-pori kulit oleh minyak berlebih, sel kulit mati, dan bakteri Propionibacterium acnes.",
                 "Asma adalah penyakit pernapasan kronis yang ditandai dengan peradangan dan penyempitan saluran napas. Gejala utamanya meliputi sesak napas, batuk, dan napas berbunyi (mengi).",
                 "Anemia adalah kondisi kekurangan hemoglobin atau sel darah merah dalam tubuh, yang menyebabkan tubuh kekurangan oksigen. Gejala umum meliputi lemas, pucat, dan pusing.",
                 "Skoliosis adalah kelainan pada tulang belakang yang melengkung ke samping berbentuk huruf C atau S. Kondisi ini biasanya terdeteksi saat masa pertumbuhan anak-anak atau remaja.",
@@ -51,7 +53,18 @@ public class PenyakitActivity extends AppCompatActivity {
                 "Leukemia adalah jenis kanker darah yang memengaruhi produksi dan fungsi sel darah putih di sumsum tulang. Penyakit ini ditandai dengan kelelahan, infeksi berulang, dan mudah berdarah.",
                 "HIV/AIDS adalah infeksi virus HIV yang menyerang sistem kekebalan tubuh, khususnya sel CD4. Jika tidak diobati, HIV dapat berkembang menjadi AIDS, tahap akhir infeksi HIV yang melemahkan tubuh secara parah.",
                 "Gagal ginjal akut adalah kondisi di mana ginjal tiba-tiba kehilangan kemampuan untuk menyaring limbah dari darah, menyebabkan penumpukan racun dan gangguan cairan serta elektrolit.",
-                "Hepatitis B adalah infeksi virus yang menyerang hati. Penyakit ini dapat menjadi kronis dan menyebabkan komplikasi serius seperti sirosis dan kanker hati."
+                "Hepatitis B adalah infeksi virus yang menyerang hati. Penyakit ini dapat menjadi kronis dan menyebabkan komplikasi serius seperti sirosis dan kanker hati.",
+                "Migren adalah gangguan neurologis yang ditandai dengan sakit kepala parah, biasanya pada satu sisi kepala, disertai dengan mual, muntah, atau sensitivitas terhadap cahaya dan suara.",
+                "Vertigo adalah kondisi yang menyebabkan sensasi pusing atau seperti lingkungan sekitar berputar. Penyebab utama adalah gangguan pada telinga bagian dalam.",
+                "Infeksi saluran kemih (ISK) adalah infeksi pada saluran kemih yang sering menyebabkan rasa terbakar saat buang air kecil, nyeri perut bagian bawah, dan urin berbau menyengat.",
+                "Alergi adalah reaksi berlebihan sistem kekebalan tubuh terhadap zat tertentu yang disebut alergen, seperti debu, serbuk sari, atau makanan tertentu.",
+                "Epilepsi adalah gangguan neurologis yang ditandai dengan kejang berulang akibat aktivitas listrik yang tidak normal di otak.",
+                "Psoriasis adalah penyakit kulit autoimun kronis yang menyebabkan bercak merah bersisik pada kulit. Penyakit ini sering kali kambuhan.",
+                "Malaria adalah penyakit infeksi yang disebabkan oleh parasit Plasmodium melalui gigitan nyamuk Anopheles yang terinfeksi.",
+                "Kolesterol tinggi adalah kondisi di mana kadar kolesterol dalam darah melebihi batas normal, meningkatkan risiko penyakit kardiovaskular.",
+                "Bronkitis adalah peradangan pada saluran bronkus di paru-paru yang menyebabkan batuk berdahak dan sesak napas.",
+                "Radang tenggorokan adalah infeksi pada tenggorokan yang sering disebabkan oleh bakteri atau virus, ditandai dengan nyeri menelan, demam, dan suara serak.",
+                "Diare adalah gangguan pencernaan yang menyebabkan buang air besar lebih sering dan cair, sering kali disertai dengan kram perut atau dehidrasi."
         };
 
 
@@ -76,8 +89,20 @@ public class PenyakitActivity extends AppCompatActivity {
                 "Gejala leukemia meliputi kelelahan, pucat, mudah memar atau berdarah, infeksi berulang, demam, pembengkakan kelenjar getah bening, dan penurunan berat badan.",
                 "Gejala HIV/AIDS meliputi demam, sakit tenggorokan, ruam kulit, kelelahan, penurunan berat badan drastis, diare kronis, dan infeksi oportunistik seperti TBC atau pneumonia.",
                 "Gejala gagal ginjal akut meliputi penurunan jumlah urin, pembengkakan pada kaki, pergelangan kaki, atau wajah, kelelahan, sesak napas, kebingungan, dan pada kasus berat, koma.",
-                "Gejala hepatitis B meliputi mual, muntah, kelelahan, nyeri perut bagian kanan atas, demam ringan, dan kulit serta mata yang menguning (jaundice)."
+                "Gejala hepatitis B meliputi mual, muntah, kelelahan, nyeri perut bagian kanan atas, demam ringan, dan kulit serta mata yang menguning (jaundice).",
+                "Gejala migren meliputi sakit kepala hebat di salah satu sisi kepala, sering kali disertai mual, muntah, atau sensitivitas terhadap cahaya dan suara.",
+                "Gejala vertigo meliputi pusing berputar, mual, muntah, kehilangan keseimbangan, dan kadang-kadang disertai telinga berdenging (tinnitus).",
+                "Gejala infeksi saluran kemih (ISK) meliputi rasa terbakar saat buang air kecil, nyeri perut bagian bawah, urin keruh atau berbau menyengat, dan sering ingin buang air kecil meskipun hanya sedikit.",
+                "Gejala alergi meliputi gatal-gatal, bersin-bersin, hidung tersumbat, mata berair, ruam kulit, dan pada kasus berat, anafilaksis yang dapat menyebabkan kesulitan bernapas.",
+                "Gejala epilepsi meliputi kejang berulang yang dapat berupa gerakan tak terkendali, kehilangan kesadaran, atau sensasi aneh sebelum kejang (aura).",
+                "Gejala psoriasis meliputi bercak merah pada kulit yang bersisik tebal, gatal atau nyeri pada area yang terkena, dan kuku yang menebal atau rusak.",
+                "Gejala malaria meliputi demam berulang, menggigil, berkeringat, sakit kepala, mual, muntah, dan nyeri otot.",
+                "Gejala kolesterol tinggi sering kali tidak terlihat, tetapi dapat meningkatkan risiko nyeri dada (angina), serangan jantung, atau stroke.",
+                "Gejala bronkitis meliputi batuk berdahak yang berlangsung lama, sesak napas, suara mengi, dan rasa tidak nyaman di dada.",
+                "Gejala radang tenggorokan meliputi nyeri menelan, tenggorokan merah dan bengkak, demam, suara serak, dan pembengkakan kelenjar getah bening di leher.",
+                "Gejala diare meliputi buang air besar cair lebih dari tiga kali sehari, kram perut, mual, muntah, dan pada kasus berat, dehidrasi dengan gejala seperti rasa haus yang berlebihan dan lemas."
         };
+
 
 
         // Penyebab untuk setiap penyakit
@@ -101,7 +126,18 @@ public class PenyakitActivity extends AppCompatActivity {
                 "Leukemia disebabkan oleh mutasi genetik yang menyebabkan produksi sel darah putih abnormal di sumsum tulang.",
                 "HIV/AIDS disebabkan oleh infeksi virus HIV yang menyerang sistem kekebalan tubuh, ditularkan melalui kontak dengan cairan tubuh seperti darah, air mani, atau cairan vagina.",
                 "Gagal ginjal akut disebabkan oleh dehidrasi, infeksi berat (sepsis), cedera fisik, penggunaan obat tertentu, atau gangguan aliran darah ke ginjal.",
-                "Hepatitis B disebabkan oleh infeksi virus hepatitis B yang menyebar melalui kontak dengan darah atau cairan tubuh yang terinfeksi, seperti melalui hubungan seksual atau penggunaan jarum suntik bersama."
+                "Hepatitis B disebabkan oleh infeksi virus hepatitis B yang menyebar melalui kontak dengan darah atau cairan tubuh yang terinfeksi, seperti melalui hubungan seksual atau penggunaan jarum suntik bersama.",
+                "Migren disebabkan oleh perubahan aktivitas otak dan interaksi antara saraf serta pembuluh darah. Faktor pemicu meliputi stres, perubahan hormonal, atau makanan tertentu.",
+                "Vertigo disebabkan oleh gangguan pada telinga bagian dalam seperti infeksi, peradangan, atau masalah keseimbangan lain, seperti penyakit Meniere.",
+                "Infeksi saluran kemih (ISK) disebabkan oleh bakteri, terutama Escherichia coli, yang masuk ke saluran kemih dan menyebabkan peradangan.",
+                "Alergi disebabkan oleh reaksi berlebihan sistem kekebalan tubuh terhadap alergen seperti serbuk sari, debu, makanan tertentu, atau obat-obatan.",
+                "Epilepsi disebabkan oleh aktivitas listrik yang tidak normal di otak. Faktor pemicu meliputi trauma kepala, stroke, atau infeksi pada sistem saraf pusat.",
+                "Psoriasis disebabkan oleh gangguan autoimun yang membuat regenerasi sel kulit terjadi terlalu cepat, sehingga menumpuk dan membentuk bercak tebal.",
+                "Malaria disebabkan oleh infeksi parasit Plasmodium yang ditularkan melalui gigitan nyamuk Anopheles betina yang terinfeksi.",
+                "Kolesterol tinggi disebabkan oleh pola makan tinggi lemak jenuh, kurang aktivitas fisik, obesitas, atau faktor genetik.",
+                "Bronkitis disebabkan oleh infeksi virus atau bakteri, serta iritasi saluran bronkus akibat polusi udara atau asap rokok.",
+                "Radang tenggorokan disebabkan oleh infeksi bakteri Streptococcus atau virus seperti influenza. Faktor pemicu meliputi paparan alergen atau iritasi tenggorokan.",
+                "Diare disebabkan oleh infeksi virus, bakteri, atau parasit yang masuk melalui makanan atau minuman yang terkontaminasi.",
         };
 
 
@@ -126,14 +162,26 @@ public class PenyakitActivity extends AppCompatActivity {
                 "Leukemia diobati dengan kemoterapi, terapi target, atau transplantasi sumsum tulang. Pada beberapa jenis leukemia, terapi radiasi juga dapat digunakan.",
                 "HIV/AIDS diobati dengan terapi antiretroviral (ARV) yang harus diminum setiap hari untuk mengendalikan virus dan memperkuat sistem kekebalan tubuh.",
                 "Gagal ginjal akut memerlukan perawatan intensif seperti pemberian cairan intravena, dialisis untuk membersihkan darah dari racun, dan pengobatan penyakit yang mendasari.",
-                "Hepatitis B diobati dengan antivirus seperti tenofovir atau entecavir untuk menghambat perkembangan virus. Vaksinasi hepatitis B sangat efektif untuk pencegahan."
+                "Hepatitis B diobati dengan antivirus seperti tenofovir atau entecavir untuk menghambat perkembangan virus. Vaksinasi hepatitis B sangat efektif untuk pencegahan.",
+                "Pengobatan migren meliputi obat pereda nyeri seperti parasetamol atau ibuprofen, serta triptan untuk mengatasi serangan migren. Terapi pencegahan melibatkan penggunaan beta-blocker atau antikonvulsan.",
+                "Vertigo diobati dengan obat seperti betahistine untuk mengurangi gejala, serta terapi rehabilitasi vestibular untuk melatih keseimbangan.",
+                "Infeksi saluran kemih (ISK) diobati dengan antibiotik seperti trimetoprim-sulfametoksazol atau nitrofurantoin. Minum air putih yang cukup membantu membersihkan bakteri dari saluran kemih.",
+                "Alergi diatasi dengan antihistamin untuk meredakan gejala, kortikosteroid pada kasus berat, dan imunoterapi untuk mengurangi sensitivitas terhadap alergen tertentu.",
+                "Epilepsi diobati dengan obat antiepilepsi seperti valproat atau lamotrigin untuk mencegah kejang. Pada beberapa kasus, operasi atau terapi stimulasi saraf vagus dapat dilakukan.",
+                "Psoriasis diobati dengan krim kortikosteroid, fototerapi, atau obat sistemik seperti metotreksat pada kasus berat.",
+                "Malaria diobati dengan obat antimalaria seperti klorokuin atau artemisinin kombinasi, tergantung pada jenis parasit dan tingkat resistensi di daerah tersebut.",
+                "Kolesterol tinggi diatasi dengan perubahan gaya hidup, seperti diet rendah lemak jenuh, olahraga teratur, dan obat seperti statin untuk menurunkan kadar kolesterol.",
+                "Bronkitis diobati dengan obat pereda gejala seperti bronkodilator, mukolitik untuk mengencerkan dahak, dan antibiotik jika disebabkan oleh infeksi bakteri.",
+                "Radang tenggorokan diobati dengan antibiotik seperti penisilin jika disebabkan oleh bakteri Streptococcus. Untuk infeksi virus, perawatan suportif meliputi obat pereda nyeri dan cairan hangat.",
+                "Diare diobati dengan rehidrasi oral menggunakan larutan elektrolit, probiotik untuk menyeimbangkan flora usus, dan pada kasus tertentu, antibiotik jika disebabkan oleh infeksi bakteri."
         };
+
 
 
         // Referensi ke View
         AutoCompleteTextView autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
         TextView descriptionTextView = findViewById(R.id.descriptionTextView);
-        LinearLayout dynamicContentLayout = findViewById(R.id.dynamicContentLayout);
+        androidx.cardview.widget.CardView dynamicContentCardView = findViewById(R.id.cardDynamicContentLayout);
         TextView deskripsiTextView = findViewById(R.id.deskripsiTextView);
         TextView gejalaTextView = findViewById(R.id.gejalaTextView);
         TextView penyebabTextView = findViewById(R.id.penyebabTextView);
@@ -148,6 +196,11 @@ public class PenyakitActivity extends AppCompatActivity {
 
         // Menangani Pilihan pada AutoCompleteTextView
         autoCompleteTextView.setOnItemClickListener((parent, view, position, id) -> {
+
+            if (position >= items.length) {
+                Toast.makeText(this, "Data tidak ditemukan", Toast.LENGTH_SHORT).show();
+                return;
+            }
             // Menampilkan data penyakit yang dipilih
             selectedDescription = items[position];
             selectedDeskripsi = deskripsi[position];
@@ -162,7 +215,9 @@ public class PenyakitActivity extends AppCompatActivity {
             obatTextView.setText(selectedObat);
 
             // Menampilkan layout tambahan
-            dynamicContentLayout.setVisibility(LinearLayout.VISIBLE);
+            dynamicContentCardView.setVisibility(View.VISIBLE);
+
+
         });
 
         // Menambahkan onClick ke TextView untuk menampilkan dialog
@@ -170,17 +225,24 @@ public class PenyakitActivity extends AppCompatActivity {
         setOnClickAlert(deskripsiTextView, "Deskripsi");
         setOnClickAlert(gejalaTextView, "Gejala");
         setOnClickAlert(penyebabTextView, "Penyebab");
-        setOnClickAlert(obatTextView, "Obat");
+        setOnClickAlert(obatTextView, "Pengobatan");
     }
 
     // Fungsi untuk menambahkan AlertDialog ke TextView
     private void setOnClickAlert(TextView textView, String title) {
         textView.setOnClickListener(v -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(PenyakitActivity.this);
-            builder.setTitle(title)
+            AlertDialog dialog = new AlertDialog.Builder(PenyakitActivity.this)
+                    .setTitle(title)
                     .setMessage(textView.getText().toString())
-                    .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
-                    .show();
+                    .setPositiveButton("OK", (dialog1, which) -> dialog1.dismiss())
+                    .create();
+
+            // Atur latar belakang kustom
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.alert_dialog_background);
+            dialog.show();
         });
     }
+
+
+
 }
